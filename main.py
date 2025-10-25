@@ -1,9 +1,15 @@
-# 在此文件中实现 PrimeList 函数
+import math
 
 def PrimeList(N):
-    """
-    返回小于 N 的所有质数，以空格分隔    
-    参数:    N - 正整数    
-    返回:    str - 包含所有小于 N 的质数的字符串，空格分隔
-    """
-    
+    primes = []
+    for x in range(2, N):
+        is_prime = True
+        # 检查2到根号x的所有数
+        for i in range(2, int(math.sqrt(x)) + 1):
+            if x % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(str(x))
+    # 将列表转为空格分隔的字符串
+    return ' '.join(primes)
